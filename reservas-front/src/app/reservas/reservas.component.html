@@ -1,0 +1,68 @@
+<div class="overflow-x-auto mt-4">  
+    <div class="mt-4">
+        <button type="button" 
+                class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-medium rounded-full text-sm p-3 text-center me-2 mb-2  ml-2"
+                [routerLink]="['./create']">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mx-auto">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+            </svg>
+        </button>                    
+    </div>
+    <table mat-table [dataSource]="dataSource" matSort class="min-w-full divide-y divide-gray-200 mt-4">
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
+        <td mat-cell *matCellDef="let element" class="px-6 py-4 whitespace-nowrap">#{{element?.idReservas}}</td>
+      </ng-container>
+  
+      <!-- Almacen Column -->
+      <ng-container matColumnDef="fechaInicio">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Fecha Inicio</th>
+        <td mat-cell *matCellDef="let element" class="px-6 py-4 whitespace-nowrap">{{element?.fechaInicio + ' '+ element?.horaInicio}}</td>
+      </ng-container>
+  
+      <!-- Local Column -->
+      <ng-container matColumnDef="fechaFin">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Fecha Fin</th>
+        <td mat-cell *matCellDef="let element" class="px-6 py-4 whitespace-nowrap">{{element?.fechaFin + ' '+ element?.horaFin  }}</td>
+      </ng-container>
+  
+      <!-- Tipo Negocio Column -->
+      <ng-container matColumnDef="laboratorio">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Laboratorio</th>
+        <td mat-cell *matCellDef="let element" class="px-6 py-4 whitespace-nowrap">{{element?.nombreReferencia}}</td>
+      </ng-container>
+  
+      <!-- Fecha Crea Column -->
+      <ng-container matColumnDef="solicitante">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Usuario</th>
+        <td mat-cell *matCellDef="let element" class="px-6 py-4 whitespace-nowrap">{{element?.nombre }}</td>
+      </ng-container>
+  
+      <!-- Acciones Column -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Acciones</th>
+        <td mat-cell *matCellDef="let element" class="px-6 py-4 whitespace-nowrap">
+          <button mat-icon-button [matMenuTriggerFor]="menu" class="text-gray-600 hover:text-gray-900">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu" class="shadow-lg bg-white border border-gray-200 rounded-md">
+            <button mat-menu-item [routerLink]="(['./update/'+element.idReservas])">
+              <mat-icon>edit</mat-icon>
+              <span>Editar</span>
+            </button>
+            <button mat-menu-item (click)="delete(element.idReservas)">
+                <mat-icon>delete</mat-icon>
+                <span>Eliminar</span>
+              </button>
+          </mat-menu>
+        </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+  
+  <mat-paginator class="mt-5" [pageSizeOptions]="[1,4, 8, 16, 20]" [pageSize]="pageSize" [length]="totalData" [pageIndex]="pageIndex" (page)="onPageChange($event)"  showFirstLastButtons></mat-paginator>
+  

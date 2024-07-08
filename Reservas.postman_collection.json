@@ -1,0 +1,181 @@
+{
+	"info": {
+		"_postman_id": "1d1b66fb-6e86-426c-b3aa-4533352a069e",
+		"name": "Reservas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21874658"
+	},
+	"item": [
+		{
+			"name": "getAllReservas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/reservas",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"reservas"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "pageElements",
+							"value": "8",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getByIdReservas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/reservas/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"reservas",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllLaboratorios",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/laboratorios",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"laboratorios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllUsuarios",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/usuarios",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"usuarios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "postReservas",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-XSRF-TOKEN",
+						"value": "{{xsrf-token}}",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fkLaboratorio\":1,\r\n    \"fkUsuario\":1,\r\n    \"fechaSolicitud\":\"2024-07-05\",\r\n    \"fechaInicio\":\"2024-07-05\",\r\n    \"horaInicio\":\"13:00\",\r\n    \"fechaFin\":\"2024-07-05\",\r\n    \"horaFin\":\"14:00\",\r\n    \"descripcion\":\"Sala para estudiantes de ingenieria\",\r\n    \"estado\":true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/reservas",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"reservas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "putReservas",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fkLaboratorio\":1,\r\n    \"fkUsuario\":1,\r\n    \"fechaSolicitud\":\"2024-07-05\",\r\n    \"fechaInicio\":\"2024-07-05\",\r\n    \"horaInicio\":\"17:00\",\r\n    \"fechaFin\":\"2024-07-05\",\r\n    \"horaFin\":\"18:00\",\r\n    \"descripcion\":\"Sala para estudiantes de ingenieria extrema\",\r\n    \"estado\":true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/reservas/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"reservas",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
